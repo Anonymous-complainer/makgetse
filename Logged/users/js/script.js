@@ -136,22 +136,35 @@ function getUsers2(){
               <div class="product-info">
                   <h3>${cards_data[r].type_} ${cards_data[r].status}</h3>
                   <p>${cards_data[r].card_item}  ${cards_data[r].price}</p>
-                  <button>Add User</button>
+                  <button class='users_' data='' id='user-${r}'>Add User</button>
               </div>
             </div>`
-            {`<div class="product-card">
-      <img src="https://via.placeholder.com/400x200.png?text=Product+1" alt="Product 1" />
-      <div class="product-info">
-        <h3>Product 1</h3>
-        <p>A short, enticing description of Product 1. Standout features and a quality build.</p>
-        <button>Join Now</button>
-      </div>
-    </div>`}
+           
 
     }
   let cards= document.querySelector(".products-grid")
 
   cards.innerHTML= r_data
+  let users= document.querySelectorAll('.users_')
+  users.forEach(element => {
+    element.addEventListener('click',()=>{
+      var id= element.getAttribute('id').split('-')[1]
+      
+      if (element.textContent=='Add User'){
+        element.textContent='Del Request';
+        element.style.backgroundColor='transparent';
+        console.log(`Request sent to  ${cards_data[id].type_}`)
+      }else{
+        element.textContent='Add User';
+        element.style.backgroundColor='#0056b3';
+        console.log(`Request to  ${cards_data[id].type_} removed`)
+      }
+
+    })
+    
+  });
+  
+
       
   
       }

@@ -23,7 +23,7 @@ window.addEventListener('load',()=>{
     const logged= accessInfo(en('logged',date1))
 
     if (pasw && grade && usern && email && logged=='true'){
-        if (!(pstate=='cost' || pstate=='login' || pstate=='verify' || pstate=='register' || pstate=='BTS'|| pstate=="logged")){window.location.assign('../login')}else{
+        if (!(pstate=='cost' || pstate=='login' || pstate=='verify' || pstate=='register' || pstate=='BTS'|| pstate=="logged" || pstate=="Dboard")){window.location.assign('../login')}else{
 
            
 
@@ -57,17 +57,10 @@ window.addEventListener('load',()=>{
                 <div class="product-info">
                     <h3>${cards_data[r].type_}</h3>
                     <p>${cards_data[r].card_item} - ${cards_data[r].price}</p>
-                    <button>Join Now</button>
+                     <button class='users_' data='' id='user-${r}'>Join Now</button>
                 </div>
               </div>`
-              {`<div class="product-card">
-        <img src="https://via.placeholder.com/400x200.png?text=Product+1" alt="Product 1" />
-        <div class="product-info">
-          <h3>Product 1</h3>
-          <p>A short, enticing description of Product 1. Standout features and a quality build.</p>
-          <button>Joinl Now</button>
-        </div>
-      </div>`}
+             
         
         
         
@@ -199,17 +192,10 @@ function getproducts2(){
                 <div class="product-info">
                     <h3>${cards_data[r].type_}</h3>
                     <p>${cards_data[r].card_item} - ${cards_data[r].price}</p>
-                    <button>Join Now</button>
+                  <button class='users_' data='' id='user-${r}'>Join Now</button>
                 </div>
               </div>`
-              {`<div class="product-card">
-        <img src="https://via.placeholder.com/400x200.png?text=Product+1" alt="Product 1" />
-        <div class="product-info">
-          <h3>Product 1</h3>
-          <p>A short, enticing description of Product 1. Standout features and a quality build.</p>
-          <button>Join Now</button>
-        </div>
-      </div>`}
+            
         
         
         
@@ -222,6 +208,16 @@ function getproducts2(){
     let cards= document.querySelector(".products-grid")
 
     cards.innerHTML= r_data
+    let users= document.querySelectorAll('.users_')
+  users.forEach(element => {
+    element.addEventListener('click',()=>{
+      var id= element.getAttribute('id').split('-')[1]
+      window.location.assign(`dashboards/discussion-grade-${cards_data[id].price}`)
+      
+
+    })
+    
+  });
         
     
         }
@@ -241,35 +237,7 @@ function getproducts2(){
 }
 function getproducts(){
     // alert('fetching')
-    fetch(line+ '/products', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({message:'Logged'})
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (true){
-            if (data.message){
-
-           console.log(data.message)
-        //    alert('data recieved')
-           localStorage.setItem('ddata',JSON.stringify(data.message))
-        }
-         
-        }else{
-        
-       
-        }
-
-       
-    })
-    .catch(error => {
-        // alert('failed to recieve data')
-        // location.reload()
-            
-    });
+    
 }
 // let con=document.querySelector(".loading-container");
 
@@ -326,7 +294,10 @@ function sendFormData(data) {
     //    alert(resp)
 
     // return "passed"// Prevent form from submitting the traditional way n Incorrect2007@
-      }
+      };
+
+
+
       function saveDOMBeforeReload() {
         window.addEventListener('beforeunload', function () {
             try {
