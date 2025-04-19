@@ -1,7 +1,7 @@
 
 window.addEventListener('load',()=>{
-    let dmcon = accessInfo("domaContent2")
-    let givendt = accessInfo('domaContentdate2')
+    let dmcon = accessInfo("domContent2")
+    let givendt = accessInfo('domContentdate2')
     let ons= accessInfo('online') 
     let dd=accessInfo(en('logged',17))
     if (givendt) {
@@ -79,7 +79,7 @@ window.addEventListener('load',()=>{
     }
     let cards= document.querySelector(".products-grid")
     // alert(cards)
-    cards.innerHTML= r_data
+    // cards.innerHTML= r_data
         
       
     
