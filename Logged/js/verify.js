@@ -1,7 +1,7 @@
 
 window.addEventListener('load',()=>{
-    let dmcon = accessInfo("domContent2")
-    let givendt = accessInfo('domContentdate2')
+    let dmcon = accessInfo("domaContent2")
+    let givendt = accessInfo('domaContentdate2')
     let ons= accessInfo('online') 
     let dd=accessInfo(en('logged',17))
     if (givendt) {
