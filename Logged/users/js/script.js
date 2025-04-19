@@ -97,12 +97,14 @@ function waitForSixtySeconds() {
 
 function getUsers2(){
   // alert('fetching')
+  let em= de(accessInfo(en('email',date1)),date1)
+  // alert(em)
   fetch(line+ '/products', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({message:'users'})
+      body: JSON.stringify({message:'users',email: em})
   })
   .then(response => response.json())
   .then(data => {
