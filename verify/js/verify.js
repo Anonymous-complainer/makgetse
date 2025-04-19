@@ -1,5 +1,7 @@
 let prev_state_s = accessInfo(de('state',date2))
-if (prev_state_s){}else{
+if (prev_state_s){
+
+}else{
     prev_state_s='login'
 }
 storeInfo(en('state',date2), 'verify')
@@ -132,13 +134,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
 // alert(accessInfo(en('email',date2)))
-const emailC= accessInfo(en('email',date2))
+let emailC= accessInfo(en('email',date2))
 if (emailC){
     // alert(emailC)
     document.querySelector('.eml').textContent = emailC
 }else{
-    
-    window.location.assign('../login')
+    emailC=  de(accessInfo(en('email',date1)),date1)
+    if (emailC){}else{
+    window.location.assign('../login')}
 }
 let dataC={ email_P: emailC + "+check"  }
 
