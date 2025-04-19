@@ -1,20 +1,55 @@
-<!DOCTYPE html>
+
+let line="https://sculpin-charming-directly.ngrok-free.app"
+// line="http://localhost:5700"
+// let theme_m='Dark'
+// localStorage.setItem('theme_+-----', theme_m)
+let access_="domContent"
+let online=false
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetch(line+ '/status', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify('hi')
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message=='okay'){
+           
+          localStorage.setItem('online','true')
+        }else{
+            online=true
+            localStorage.setItem('online','true')
+       
+        }
+        localStorage.setItem('online','true')
+      
+       
+    })
+    .catch(error => {
+        console.log(error)
+        localStorage.setItem('online','false')
+        document.querySelector('html').innerHTML=`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechNify | Welcome</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Makgetse Dashboard | offline</title>
+    
     <style>
         body{
-            height:110vh;
+            height:100vh;
             width:100vw;
             background-color:black;
             overflow: hidden;
+            transform: scale(0.8)
         }
         .loading{
- height:110vh;
+ height:100vh;
  overflow: hidden;
+ 
     
 }
 .loader{
@@ -39,7 +74,6 @@
     font-size: 2rem;
     color: aqua;
 }
-
 .hide{
     visibility: hidden;
     min-height: 0px;
@@ -254,7 +288,7 @@ top:0;
 .earth-orbit {
 	width: 165px;
 	height: 165px;
-  animation:spin 12s linear 0s infinite;
+  animation: spin 12s linear 0s infinite;
   -webkit-animation: spin 12s linear 0s infinite;
 }
 
@@ -268,7 +302,7 @@ top:0;
 .mercury-orbit {
 	width: 90px;
 	height: 90px;
-  animation:spin 3s linear 0s infinite;
+ animation: spin 3s linear 0s infinite;
   -webkit-animation: spin 3s linear 0s infinite;
 }
 
@@ -302,22 +336,25 @@ top:0;
   border: 1px solid #91daffa5;
   animation: spin3D 3s linear .2s infinite;
   -webkit-animation: spin3D 3s linear .2s infinite;
-  
 }
 
 .green-orbit {
 	width: 120px;
 	height: 120px;
   border: 1px solid #91ffbfa5;
-  animation:spin3D 2s linear 0s infinite;
+animation: spin3D 2s linear 0s infinite;
   -webkit-animation: spin3D 2s linear 0s infinite;
+}
+.inf{
+  text-align: center;
+  /* transform: scale(1); */
 }
 
 .red-orbit {
 	width: 90px;
 	height: 90px;
   border: 1px solid #ffca91a5;
-  animation: spin3D 1s linear 0s infinite;
+ animation: spin3D 1s linear 0s infinite;
   -webkit-animation: spin3D 1s linear 0s infinite;
 }
 
@@ -349,191 +386,36 @@ top:0;
   border-radius: 50%;
   animation: spin .5s linear 0s infinite;
 }
-    </style>
-    <script>
-        window.addEventListener('load',()=>{
-         document.querySelector('style').innerHTML=`/* Global Styles */
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #000;
-      color: whitesmoke;
-      overflow: hidden;
-      min-height: 100vh;
-    }
-    
-    /* Header Syles */
-    .site-header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      /* border: 1px solid red; */
-    }
-    .site-header .logo {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color:#00bcd4;
 
-      margin: 20px;
-    }
-    .site-header .nav-menu ul {
-      list-style: none;
-      display: flex;
-      margin: 0;
-      padding: 0;
-      padding-right: 20px;
-      /* border: 1px solid red; */
-    }
-    .site-header .nav-menu ul li {
-      margin-left: 10px;
-      /* border: 1px solid red; */
-    }
-    .site-header .nav-menu ul li a {
-      text-decoration: none;
-      color: #fff;
-      transition: color 0.3s ease;
-      font-weight: 500;
-      font-size: large;
-      font-family: sans-serif;
-    }
-    .site-header .nav-menu ul li a:hover {
-        color: whitesmoke;
-      animation: fadeIn 1.5s ease-out;
-    }
-    
-    /* Hero Section */
-    .hero-section {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-    }
-    
-    /* Background Video */
-    .hero-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: 1;
-      }
-    
-    /* Dark Overlay for Contrast */
-    .overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 44;
-    }
-    
-    /* Hero Content */
-    .hero-content {
-      position: relative;
-      max-width: 800px;
-      padding: 20px;
-      animation: fadeIn 1.5s ease;
-      z-index: 44;
-    }
-    
-    .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      animation: slideDown 1s ease-out;
-      color: #fff;
-    }
-    
-    .hero-content p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-      animation: slideDown 1.5s ease-out;
-    }
-    
-    /* CTA Buttons */
-    .cta-buttons {
-      display: inline-flex;
-      gap: 20px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    
-    .cta-button {
-      background: #007bff;
-      border: 2px solid #007bff;
-      color: #fff;
-      padding: 0.8rem 2rem;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s, color 0.3s;
-      animation: fadeIn 2s ease;
-    }
-    
-    .cta-button:hover {
-      background: transparent;
-      color: #007bff;
-      transform: scale(1.1);
-    }
-    
-    /* Keyframe Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    @keyframes slideDown {
-      from { transform: translateY(-20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-      @media only screen and (max-width:572px){
-      .hero-content h1{
-      font-size: larger}
-      
-      .hero-content p{
-      font-size: small}
 
-       .site-header .logo {
-       font-size:large;
-       }
-       #ss{
-       display:none}
-
-      }
-       @media only screen and (min-width:386px){
-       #ss{
-       display:unset}
-       }
+h5{
+            color:#A9A9A9;
+        }
         
-
-       @media only screen and (min-width:500px){
-        .site-header .nav-menu ul li a{
-        font-size:x-large;}
-       }
-      `
-        })
-    </script>
+        /* Offline container styling */
+        .offline-container {
+          text-align: center;
+          max-width: 600px;
+          padding: 20px;
+        }
+        
+        h1 {
+          font-size: 2.5rem;
+          color: #007ACC; /* Vibrant red for offline message */
+          margin-bottom: 15px;
+        }
+        
+        p {
+          font-size: 1.2rem;
+          color: #cccccc; /* Light grey text for description */
+        }
+    </style>
+    
 </head>
 <body>
     <div class="loader" id="loader">
         <div class="headl">Makgetse S.S</div>
-
+        
         <div class="spinner-box">
             <div class="blue-orbit leo">
             </div>
@@ -551,49 +433,197 @@ top:0;
             <div class="white-orbit w3 leo">
             </div>
         </div>
-    </div>
-    <header class="site-header">
-      <div class="logo">Makgetse <span id="ss">S.S</span></div>
-      <nav class="nav-menu">
-        <ul>
-          <li><a href="login/">Login</a></li>
-          <li><a href="services/">Services</a></li>
-          <li><a href="about/">About</a></li>
-          
-        </ul>
-      </nav>
-    </header>
-  
-    <!-- Hero Section with Background Video -->
-    <section class="hero-section">
-      <!-- Background Video -->
-      <video class="hero-video" loop muted autoplay playsinline>
-        <source src="sources/v1.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <!-- Overlay for Contrast -->
-      <div class="overlay"></div>
-      <!-- Hero Content -->
-      <div class="hero-content">
-        <h1 id="hed" >Learners Platform</h1>
-        <p id="par" >Empowering students with the best learning experience.</p>
-        <div class="cta-buttons">
-          <button class="cta-button">Create Account</button>
-          <!-- <button class="cta-button">Explore More</button> -->
+<div class="inf">
+          <h1>We Are Offline</h1>
+          <p>We're temporarily disconnected, but we'll be back shortly. Stay tuned!</p>
+          <footer>
+              <h5>Copyright 2025 &copy; Makgetse Dashboard . All rights reserved</h5>
+            </footer>
         </div>
-      </div>
-    </section>
-  
+    </div>
+   
+</div>
 
-    <script>
-        window.addEventListener('load',()=>{
-         document.querySelector('#loader').style.display='none'
-         let tbn= document.querySelector('.cta-button')
-         tbn.addEventListener('click',()=>{
-          window.location.assign('register/')
-         })
-        })
-    </script>
+
+<script>
+</script>
+    
     
 </body>
-</html>
+</html>`
+
+function check(){
+  fetch(line+ '/status', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify('hi')
+})
+.then(response => response.json())
+.then(data => {
+    if (data.message=='okay'){
+       
+      
+          
+    }else{
+    
+   
+    }
+
+    window.location.reload()
+   
+})
+.catch(error => {
+    console.log('testing')
+});
+}
+setInterval(check,5000)
+
+            
+    });
+})
+if (!(localStorage.getItem('theme_+-----'))){
+    let pagbody= document.querySelector('html')
+    let pagbodyC=pagbody.innerHTML
+    let pagbody2= document.querySelector('body')
+    let pageCode= pagbody.innerHTML
+    // let theme='none';
+    const storageKey = 'theme_+-----';
+    let userInput = localStorage.getItem(storageKey);
+    theme= userInput
+    
+    
+    if (!userInput){
+         pagbody.innerHTML=`<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Makgetse Dashboard | Theme</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <style>
+            body{
+                background-color: black;
+                display: flex;
+                align-items: center;
+                height:100vh;
+                width:100vw;
+                justify-content: center;
+                color: white;
+                flex-direction: column;
+            }
+            .container{
+                width:200px;
+                height:100px;
+                border: 1px solid white;
+                border-radius: 20px;
+                border-bottom: 1px solid transparent;
+                border-top: 1px solid transparent;
+                display: flex;
+                justify-content: space-between;
+                padding: 0 30px;
+                align-items: center;
+                gap: 20px
+    
+            }
+    
+            .dark,.light{
+              height:50px
+              ;
+              display: flex;
+              width:50%;
+             
+              align-items: center;
+              justify-content: center
+              ;
+              border-radius: 20px;
+              cursor: pointer;
+            }
+            .head{
+                color: rgb(255,255,255);
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            .dark{
+                border: 1px solid white;
+            }
+            .light{
+                border: 1px solid aqua;
+                color: black;
+                background-color: rgba(255,255,255,0.9);
+                font-weight: 900;
+            }
+            body{
+                overflow: hidden;
+            }
+            .tk{
+                animation: colorFlow 5s alternate;
+            }
+            @keyframes colorFlow {
+        0% {
+            color: black;
+        }
+    
+        25% {
+            color: white
+        }
+    
+        50% {
+            color: transparent;
+            -webkit-text-stroke: 1px white;
+        }
+    
+        70% {
+            color: transparent;
+            -webkit-text-stroke: 1px white;
+        }
+    
+        100% {
+            color: white;
+        }
+    }
+    
+        </style>
+    </head>
+    <body>
+    <script src="loader.js"></script>
+        <div class="head">
+            Choose your <span class="tk">Laerner</span> Theme
+        </div>
+        <div class="container">
+              <div onclick='dark()' class="dark">Dark</div>
+              <div onclick='light()' class="light">Light</div>
+        </div>
+    </body>
+    `
+    
+    
+    }else{
+        
+        if (theme=='Light'){
+        pagbody2.style.color='white'
+    
+        document.querySelectorAll('select').forEach(element =>{
+            element.style.color= 'black'
+        })
+        }
+    
+    
+    }
+    
+    function dark(){
+        // alert('Dark')
+        localStorage.setItem(storageKey, 'Dark');
+        theme= 'Dark'
+        window.location.href = 'index.html'
+    
+    
+    }
+    function light(){
+        localStorage.setItem(storageKey, 'Light');
+        theme='Light'
+        window.location.href = 'index.html'
+    }
+    
+    
+        
+}

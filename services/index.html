@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - Makgetse Learners Dashboard</title>
+  <style>
+    h2{
+        animation: slideDown 1.5s ease-out;
+    }
+    p ,ul{
+        animation: slideDown 0.7s ease-out;  
+    }
+    body {
+      background-color: #121212; /* Dark background */
+      color: #e0e0e0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+   
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    .section {
+      margin-bottom: 40px;
+      /* margin-top: 80px; */
+    }
+    .section h2 {
+      color: #00bcd4;
+      font-size: 2em;
+      border-bottom: 2px solid #00bcd4;
+      padding-bottom: 10px;
+    }
+    ul {
+      margin-left: 20px;
+    }
+
+    .site-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      /* border: 1px solid red; */
+    }
+    
+    .site-header .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+     cursor: pointer;
+      margin: 20px;
+    }
+    .site-header .nav-menu ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      padding-right: 20px;
+      /* border: 1px solid red; */
+    }
+    .site-header .nav-menu ul li {
+      margin-left: 10px;
+      /* border: 1px solid red; */
+    }
+    .site-header .nav-menu ul li a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s ease;
+      font-weight: 500;
+      font-size: large;
+      font-family: sans-serif;
+    }
+    .site-header .nav-menu ul li a:hover,.site-header .logo:hover {
+      color: whitesmoke;
+      animation: fadeIn 1.5s ease-out
+    }
+    #main{
+        animation:unset
+    }
+
+    footer {
+      background-color: transparent;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.9em;
+      position: relative;
+    }
+
+     /* Keyframe Animations */
+     @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+      @media only screen and (max-width:572px){
+      .hero-content h1{
+      font-size: larger}
+      
+      .hero-content p{
+      font-size: small}
+
+       .site-header .logo {
+       font-size:large;
+       }
+       #ss{
+       display:none}
+
+      }
+       @media only screen and (min-width:386px){
+       #ss{
+       display:unset}
+       }
+        
+
+       @media only screen and (min-width:500px){
+        .site-header .nav-menu ul li a{
+        font-size:x-large;}
+       }
+    @media (max-width: 600px) {
+ 
+      .section h2 {
+        font-size: 1.5em;
+      }
+    }
+    #main{
+      color:#00bcd4
+    }
+    .header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    .header h1 {
+      margin: 0;
+      color: #00bcd4;
+    }
+    .header p {
+      margin-top: 5px;
+      font-size: 1.1em;
+    }
+    @media (max-width: 355px) {
+      .header h1{
+        font-size:large;
+      }
+      .header p{
+        font-size:0.8em
+      }
+
+ 
+ 
+}
+  </style>
+</head>
+<body>
+
+  
+    <header class="site-header">
+        <div class="logo">Makgetse <span id="ss">S.S</span></div>
+        <nav class="nav-menu">
+          <ul>
+            <li><a href="../login/">Login</a></li>
+            <li><a id="main" href="#">Services</a></li>
+            <li><a  href="../about/">About</a></li>
+            
+          </ul>
+        </nav>
+      </header>
+
+      <div class="header">
+        <h1>Makgetse Learners Dashboard </h1>
+        <p>Striving for Excellence in Education</p>
+      </div>
+  
+  <div class="container">
+    <!-- Overview Section -->
+    <section class="section" id="overview">
+      <h2>Overview</h2>
+      <p>
+        Welcome to the Makgetse Learners Dashboard – a comprehensive online platform designed exclusively for high school students. Our platform provides a singular, unified dashboard where learners can create accounts, engage in dynamic discussions, share educational materials, and communicate privately or anonymously. This environment is built to foster open conversations and collaborative learning, ensuring that every interaction contributes to academic growth.
+      </p>
+    </section>
+    
+    <!-- Feature Details Section -->
+    <section class="section" id="features">
+      <h2>Our Features</h2>
+      <p>
+        At Makgetse Learners Dashboard, we believe that effective communication and resource sharing are key to academic excellence. Here’s what we offer:
+      </p>
+      <ul>
+        <li>
+          <strong>Account Creation:</strong> Learners can quickly register and create personalized accounts, unlocking access to a suite of interactive tools.
+        </li>
+        <li>
+          <strong>Anonymous Participation:</strong> For those who wish to maintain privacy, our platform allows users to engage in discussions anonymously, ensuring that every voice is heard without compromising identity.
+        </li>
+        <li>
+          <strong>Material Sharing:</strong> Students can share study materials, notes, and external resources, making learning a truly collaborative experience.
+        </li>
+        <li>
+          <strong>Discreet Messaging:</strong> Enjoy secure, one-on-one messaging options where conversations remain private, fostering honest and confidential communication.
+        </li>
+        <li>
+          <strong>Instant Notifications:</strong> Stay in the loop with real-time notifications about important discussions and updates, ensuring critical information is never missed.
+        </li>
+      </ul>
+    </section>
+    
+    <!-- Mission Section -->
+    <section class="section" id="mission">
+      <h2>Our Mission</h2>
+      <p>
+        Our mission is to empower high school learners by providing them with a secure and innovative digital hub. We are dedicated to enhancing the academic experience by facilitating seamless communication, resource sharing, and collaboration. Whether you are seeking answers to complex topics or looking to contribute to enriching discussions, Makgetse Learners Dashboard is your trusted partner in education.
+      </p>
+    </section>
+    
+    <!-- Technology Section -->
+    <section class="section" id="technology">
+      <h2>Our Technology</h2>
+      <p>
+        Built on the latest web technologies, our dashboard is designed to deliver a fast, responsive, and secure user experience. From robust data protection measures to an intuitive interface, every aspect of our platform is optimized to support effective learning and communication. The design is fully responsive, ensuring a seamless experience on both desktop and mobile devices.
+      </p>
+    </section>
+    
+    <!-- Community Section -->
+    <section class="section" id="community">
+      <h2>Building a Community</h2>
+      <p>
+        We aim to cultivate a supportive and dynamic community where every learner feels valued. By promoting open dialogue, encouraging respectful debates, and enabling thoughtful collaboration, we strive to create an environment where academic and personal growth go hand in hand.
+      </p>
+    </section>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 Makgetse Learners Dashboard. All rights reserved.</p>
+  </footer>
+  <script>
+    let logo= document.querySelector('.logo')
+    logo.addEventListener('click',()=>{
+      window.location.assign('../')
+    })
+  </script>
+</body>
+</html>
